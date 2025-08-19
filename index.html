@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agencia de IA para Marketing | Abi Arguilar</title>
+  <meta name="description" content="Ayudo a emprendedores y pymes a aumentar ventas con IA: contenido, anuncios, chatbots y automatización. Resultados medibles desde el día 1." />
+  <meta name="theme-color" content="#111827" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Agencia de IA para Marketing | Abi Arguilar" />
+  <meta property="og:description" content="Contenido, anuncios y chatbots con IA para vender más." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <!-- Fuente: Inter (fallbacks seguros) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#111827;
+      --muted:#9aa4b2;
+      --text:#e5e7eb;
+      --brand:#7c3aed; /* violeta */
+      --brand-2:#06b6d4; /* cian */
+      --ok:#22c55e;
+      --warn:#f59e0b;
+      --danger:#ef4444;
+      --ring: 2px solid rgba(124,58,237,.35);
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --max: 1200px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+      background: radial-gradient(1200px 600px at 70% -10%, rgba(124,58,237,.18), transparent 60%),
+                  radial-gradient(900px 500px at 0% 10%, rgba(6,182,212,.14), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible{
+      outline: none; box-shadow: 0 0 0 3px rgba(124,58,237,.6);
+      border-radius: 8px;
+    }
+    img{max-width:100%;display:block}
+    .container{max-width:var(--max);margin:0 auto;padding:0 24px}
+    /* Header */
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:saturate(1.2) blur(10px);
+      background: rgba(11,16,32,.65);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      height:70px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;font-weight:700;
+      letter-spacing:.3px;
+    }
+    .logo{
+      width:36px;height:36px;border-radius:50%;
+      background: conic-gradient(from 0deg,var(--brand),var(--brand-2));
+      display:grid;place-items:center;
+      color:#fff;font-size:18px; box-shadow: var(--shadow);
+    }
+    .menu{display:flex;gap:18px;align-items:center}
+    .menu a{padding:8px 10px;color:var(--muted)}
+    .menu a:hover{color:#fff}
+    .btn{
+      background:linear-gradient(135deg,var(--brand),var(--brand-2));
+      color:#fff;border:none;border-radius:999px;
+      padding:10px 18px;font-weight:600;cursor:pointer;
+      transition:transform .15s ease;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn-outline{
+      background:transparent;border:1px solid rgba(255,255,255,.18);
+      color:#fff
+    }
+    /* Mobile */
+    .burger{display:none;background:none;border:none;color:#fff;font-size:26px}
+    @media (max-width:900px){
+      .menu{display:none}
+      .burger{display:block}
+      .mobile{
+        position:absolute;left:0;right:0;top:70px;
+        background: rgba(11,16,32,.95);
+        display:none;flex-direction:column;gap:10px;
+        padding:14px 24px 24px;border-bottom:1px solid rgba(255,255,255,.06)
+      }
+      .mobile a{padding:10px 0;color:var(--muted)}
+      .mobile.show{display:flex}
+    }
+    /* Hero */
+    .hero{padding:70px 0 40px}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}
+    @media (max-width:900px){ .hero-grid{grid-template-columns:1fr} }
+    .badge{
+      display:inline-flex;gap:8px;align-items:center;
+      background: rgba(124,58,237,.15);
+      border:1px solid rgba(124,58,237,.35);
+      color:#e9d5ff;padding:6px 10px;border-radius:999px;font-size:13px
+    }
+    h1{font-size:42px;line-height:1.15;margin:14px 0 10px}
+    .lead{color:var(--muted);font-size:18px;margin-bottom:22px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero-card{padding:18px}
+    .stats{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px
+    }
+    .stat{padding:14px;text-align:center;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
+    .stat b{font-size:22px}
+    /* Sección genérica */
+    section{padding:56px 0}
+    .section-title{font-size:28px;margin:0 0 12px}
+    .section-lead{color:var(--muted);margin-top:0}
+    /* Servicios */
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media (max-width:900px){.grid-3{grid-template-columns:1fr}}
+    .service{padding:18px}
+    .service h3{margin:8px 0 6px}
+    .badge-soft{
+      font-size:12px;display:inline-block;padding:4px 8px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);color:#d1d5db
+    }
+    /* Casos */
+    .case{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center}
+    @media (max-width:900px){.case{grid-template-columns:1fr}}
+    .kpi{display:flex;gap:12px;flex-wrap:wrap}
+    .kpi span{background:rgba(34,197,94,.2);border:1px solid rgba(34,197,94,.35);padding:6px 10px;border-radius:999px}
+    /* Precios */
+    .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media (max-width:900px){.prices{grid-template-columns:1fr}}
+    .price .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+    .price ul{padding-left:18px;margin:12px 0 0}
+    .price li{margin:8px 0;color:var(--muted)}
+    .price .num{font-size:32px;font-weight:700}
+    /* Testimonios */
+    .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media (max-width:900px){.quotes{grid-template-columns:1fr}}
+    blockquote{margin:0;padding:18px}
+    blockquote p{margin:0 0 10px}
+    /* FAQ */
+    details{background: rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px 14px}
+    details+details{margin-top:10px}
+    summary{cursor:pointer;font-weight:600}
+    /* Contacto */
+    .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}
+    @media (max-width:900px){.contact{grid-template-columns:1fr}}
+    form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:600px){form .row{grid-template-columns:1fr}}
+    label{display:block;margin:10px 0 6px}
+    input, textarea, select{
+      width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.03);color:#fff
+    }
+    textarea{min-height:120px;resize:vertical}
+    .hint{font-size:12px;color:var(--muted)}
+    .success{color:var(--ok);margin-top:8px;display:none}
+    .error{color:var(--danger);margin-top:8px;display:none}
+    /* Footer */
+    footer{padding:36px 0;color:#cbd5e1;border-top:1px solid rgba(255,255,255,.08)}
+    .foot{display:flex;gap:18px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+    .foot a{color:#cbd5e1}
+    .chip{border:1px solid rgba(255,255,255,.12);padding:6px 10px;border-radius:999px}
+    /* Utilidades */
+    .muted{color:var(--muted)}
+    .center{text-align:center}
+    .mt-8{margin-top:8px}.mt-16{margin-top:16px}.mt-24{margin-top:24px}
+    .w-100{width:100%}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="container nav" aria-label="Principal">
+      <a class="brand" href="#home">
+        <span class="logo" aria-hidden="true">AI</span>
+        <span>Agencia IA · Arguilar</span>
+      </a>
+      <div class="menu" role="menubar" aria-label="Secciones">
+        <a href="#servicios" role="menuitem">Servicios</a>
+        <a href="#casos" role="menuitem">Casos</a>
+        <a href="#precios" role="menuitem">Precios</a>
+        <a href="#faq" role="menuitem">FAQ</a>
+        <a href="#contacto" role="menuitem" class="btn">Contactar</a>
+      </div>
+      <button class="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">☰</button>
+      <div id="mobileMenu" class="mobile" role="menu" aria-label="Menú móvil">
+        <a href="#servicios">Servicios</a>
+        <a href="#casos">Casos</a>
+        <a href="#precios">Precios</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacto" class="btn">Contactar</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <main id="home" class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="badge">🚀 IA para vender más</span>
+        <h1>Impulso tu negocio con <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent;">IA en marketing</span></h1>
+        <p class="lead">
+          Soy <strong>Abigail Arguilar</strong>, estudiante de <strong>Full-Stack</strong> y <strong>Marketing Digital</strong>, integrando <strong>IA generativa</strong> para crear
+          contenido, anuncios y <strong>chatbots</strong> que convierten. Resultados medibles desde el día 1.
+        </p>
+        <div class="cta">
+          <a class="btn" href="#contacto">Quiero resultados</a>
+          <a class="btn btn-outline" href="https://wa.me/message/J2RD6VSB7B43M1" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+          <a class="btn btn-outline" href="https://www.linkedin.com/in/abigail-arguilar/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>+30</b><div class="muted">Piezas/mes de contenido</div></div>
+          <div class="stat"><b>−40%</b><div class="muted">Costo por lead</div></div>
+          <div class="stat"><b>3×</b><div class="muted">Velocidad de producción</div></div>
+        </div>
+      </div>
+      <div class="card hero-card" aria-hidden="true">
+        <img alt="" src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1400&auto=format&fit=crop" style="border-radius:12px" />
+        <div class="mt-8 grid-3">
+          <div class="badge-soft">Chatbots</div>
+          <div class="badge-soft">Anuncios IA</div>
+          <div class="badge-soft">SEO + Contenido</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Servicios -->
+  <section id="servicios" class="container">
+    <h2 class="section-title">Servicios con IA</h2>
+    <p class="section-lead">Paquetes prácticos para emprendedores y pymes. Implementación rápida y optimizada.</p>
+    <div class="grid-3">
+      <article class="card service">
+        <span class="badge-soft">Contenido</span>
+        <h3>Contenido automatizado</h3>
+        <p class="muted">Calendarios, copies y creatividades para redes y blog. Optimizado para SEO y conversiones.</p>
+        <ul class="muted">
+          <li>30 posts mensuales + variaciones</li>
+          <li>Blogs con keywords objetivo</li>
+          <li>Diseños con IA (imágenes/video)</li>
+        </ul>
+      </article>
+      <article class="card service">
+        <span class="badge-soft">Ads</span>
+        <h3>Anuncios con IA</h3>
+        <p class="muted">Creatividades, audiencias y test A/B. Disminuye CPL y acelera el aprendizaje.</p>
+        <ul class="muted">
+          <li>Meta/Google/TikTok Ads</li>
+          <li>Copy + assets generativos</li>
+          <li>Reporting claro y accionable</li>
+        </ul>
+      </article>
+      <article class="card service">
+        <span class="badge-soft">Automatización</span>
+        <h3>Chatbots & Automatizaciones</h3>
+        <p class="muted">Bots web/WhatsApp para atención 24/7, captación y calificación de leads.</p>
+        <ul class="muted">
+          <li>FAQ + derivación a humano</li>
+          <li>Integración CRM (Zapier/Make)</li>
+          <li>Plantillas reutilizables</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- Casos -->
+  <section id="casos" class="container">
+    <h2 class="section-title">Casos de éxito</h2>
+    <p class="section-lead">Ejemplos típicos de mejora al integrar IA en marketing.</p>
+    <div class="card case">
+      <div>
+        <img alt="Panel con métricas de campaña mejorando" src="https://img.freepik.com/fotos-gratis/conceito-de-compras-online_23-2151896842.jpg?semt=ais_hybrid&w=740" style="border-top-left-radius:16px;border-bottom-left-radius:16px; width:100%; height:100%; object-fit:cover">
+      </div>
+      <div style="padding:18px">
+        <h3>eCommerce moda</h3>
+        <p class="muted">Generación de 60 creatividades IA + anuncios dinámicos. Optimización de audiencias y copies.</p>
+        <div class="kpi mt-8">
+          <span>+48% ROAS</span>
+          <span>−37% CPL</span>
+          <span>+3.2x producción</span>
+        </div>
+      </div>
+    </div>
+    <div class="card case" style="margin-top:18px">
+      <div style="padding:18px">
+        <h3>Gimnasio local</h3>
+        <p class="muted">Chatbot WhatsApp para consultas, turnos y promos. Integración con Google Calendar.</p>
+        <div class="kpi mt-8">
+          <span>+62% leads calificados</span>
+          <span>−50% tiempo de respuesta</span>
+        </div>
+      </div>
+      <div>
+        <img alt="Cliente conversando con un chatbot" src="https://images.unsplash.com/photo-1545235617-9465d2a55698?q=80&w=1200&auto=format&fit=crop" style="border-top-right-radius:16px;border-bottom-right-radius:16px; width:100%; height:100%; object-fit:cover">
+      </div>
+    </div>
+  </section>
+
+  <!-- Precios -->
+  <section id="precios" class="container">
+    <h2 class="section-title">Planes simples</h2>
+    <p class="section-lead">Empezá chico, escalá cuando veas resultados.</p>
+    <div class="prices">
+      <article class="card service price">
+        <div class="head">
+          <h3>Starter</h3><div class="num">US$25</div>
+        </div>
+        <p class="muted">Para validar ideas con IA.</p>
+        <ul>
+          <li>12 posts/mes + 1 blog</li>
+          <li>1 funnel simple</li>
+          <li>Reporte mensual</li>
+        </ul>
+        <div class="mt-16"><a href="#contacto" class="btn w-100 center">Quiero este</a></div>
+      </article>
+      <article class="card service price" style="border:1px solid rgba(124,58,237,.45)">
+        <div class="head">
+          <h3>Growth</h3><div class="num">US$40</div>
+        </div>
+        <p class="muted">Balance entre alcance y conversión.</p>
+        <ul>
+          <li>30 posts/mes + 4 blogs</li>
+          <li>Ads IA (Meta/Google)</li>
+          <li>Chatbot básico</li>
+        </ul>
+        <div class="mt-16"><a href="#contacto" class="btn w-100 center">Elegir Growth</a></div>
+      </article>
+      <article class="card service price">
+        <div class="head">
+          <h3>Performance</h3><div class="num">US$70</div>
+        </div>
+        <p class="muted">Para escalar agresivo.</p>
+        <ul>
+          <li>60 posts/mes + 8 blogs</li>
+          <li>Ads multi-plataforma + A/B</li>
+          <li>Chatbot avanzado + CRM</li>
+        </ul>
+        <div class="mt-16"><a href="#contacto" class="btn w-100 center">Escalar ahora</a></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Testimonios -->
+  <section class="container">
+    <h2 class="section-title">Qué dicen los clientes</h2>
+    <p class="section-lead">Confianza, claridad y resultados.</p>
+    <div class="quotes">
+      <blockquote class="card">
+        <p>“En 3 semanas bajamos el costo por lead a la mitad con anuncios generados por IA.”</p>
+        <footer class="muted">— Martina, Ecommerce</footer>
+      </blockquote>
+      <blockquote class="card">
+        <p>“El chatbot nos libera 4 horas diarias. Los leads llegan listos para vender.”</p>
+        <footer class="muted">— Tomás, Gimnasio</footer>
+      </blockquote>
+      <blockquote class="card">
+        <p>“Tener 1 mes de contenido en 2 horas nos cambió el juego.”</p>
+        <footer class="muted">— Laura, Servicios</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="container">
+    <h2 class="section-title">Preguntas frecuentes</h2>
+    <details>
+      <summary>¿Cómo empezamos?</summary>
+      <p class="muted">Agendamos una llamada de 20 minutos, definimos objetivo y elegimos plan. La implementación arranca en 48–72 hs.</p>
+    </details>
+    <details>
+      <summary>¿Necesito pagar herramientas?</summary>
+      <p class="muted">Podemos arrancar con planes gratuitos y luego optimizar con versiones de pago según el retorno que veas.</p>
+    </details>
+    <details>
+      <summary>¿Qué pasa si no veo resultados?</summary>
+      <p class="muted">Ajustamos estrategia y creatividades. Si en 30 días no hay mejora, pausamos sin costo adicional.</p>
+    </details>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="container">
+    <h2 class="section-title">Hablemos</h2>
+    <p class="section-lead">Contame sobre tu negocio y te propongo un plan con IA.</p>
+    <div class="contact">
+      <form class="card" id="contactForm" method="POST" action="https://formspree.io/f/TU_ID_FORMSPREE" aria-labelledby="contactTitle" novalidate>
+        <div style="padding:18px">
+          <h3 id="contactTitle" style="margin:0 0 8px">Escribime</h3>
+          <div class="row">
+            <div>
+              <label for="name">Nombre</label>
+              <input id="name" name="name" type="text" placeholder="Tu nombre" aria-required="true" required />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="tu@email.com" aria-required="true" required />
+            </div>
+          </div>
+          <label for="service">Interés</label>
+          <select id="service" name="service">
+            <option>Contenido con IA</option>
+            <option>Anuncios con IA</option>
+            <option>Chatbots / Automatización</option>
+            <option>Otro</option>
+          </select>
+          <label for="message">Mensaje</label>
+          <textarea id="message" name="message" placeholder="Contame tu objetivo y contexto..."></textarea>
+          <p class="hint">También podés escribir directo a <a href="mailto:abiarguilarjobs@mail.com">abiarguilarjobs@mail.com</a></p>
+          <button class="btn" type="submit">Enviar</button>
+          <a class="btn btn-outline" style="margin-left:8px" target="_blank" rel="noopener"
+             href="https://wa.me/5490000000000?text=Hola%20Abi,%20quiero%20mejorar%20mi%20marketing%20con%20IA">WhatsApp</a>
+          <div id="formSuccess" class="success">¡Gracias! Te respondo pronto.</div>
+          <div id="formError" class="error">Ups, hubo un error. Probá de nuevo o escribime por WhatsApp.</div>
+        </div>
+      </form>
+      <aside class="card" style="padding:18px">
+        <h3>Sobre mí</h3>
+        <p class="muted">
+          Soy <strong>Abigail Arguilar</strong>, estudiante de desarrollo <strong>Full-Stack</strong> y <strong>Marketing Digital</strong>.
+          Exploro cómo integrar <strong>IA generativa</strong> para beneficiar al mercado con soluciones prácticas.
+        </p>
+        <ul class="muted" style="margin:0;padding-left:18px">
+          <li>Skills: HTML, CSS, Java, Python, Marketing, IA generativa</li>
+          <li>Email: <a href="mailto:abiarguilarjobs@mail.com">abiarguilarjobs@mail.com</a></li>
+          <li>LinkedIn: <a href="https://www.linkedin.com/in/abigail-arguilar/" target="_blank" rel="noopener">/abigail-arguilar</a></li>
+        </ul>
+        <div class="mt-16">
+          <span class="chip">Entrega en 7 días</span>
+          <span class="chip">Sin ataduras</span>
+          <span class="chip">Reporte claro</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container foot">
+      <div>© <span id="year"></span> Agencia IA · Abi</div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="#servicios">Servicios</a>
+        <a href="#casos">Casos</a>
+        <a href="#precios">Precios</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Año dinámico
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Menú móvil accesible
+    const burger = document.querySelector('.burger');
+    const mobile = document.getElementById('mobileMenu');
+    burger?.addEventListener('click', () => {
+      const isOpen = mobile.classList.toggle('show');
+      burger.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // Manejo elegante del form (mostrar mensajes sin recargar)
+    const form = document.getElementById('contactForm');
+    const ok = document.getElementById('formSuccess');
+    const err = document.getElementById('formError');
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      ok.style.display = 'none';
+      err.style.display = 'none';
+      const data = new FormData(form);
+      try{
+        const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' }});
+        if(res.ok){
+          ok.style.display = 'block';
+          form.reset();
+        } else {
+          err.style.display = 'block';
+        }
+      }catch(_e){
+        err.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
